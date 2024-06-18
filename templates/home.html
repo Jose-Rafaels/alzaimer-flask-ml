@@ -1,69 +1,75 @@
-{% extends "layouts.html" %} {% block content %}
+{% extends "layouts.html" %} {% block title %}Dashboard {% endblock %} {% block
+content %}
 <!--**********************************
             Content body start
         ***********************************-->
-<div class="content-body">
-  <!-- row -->
-  <div class="container-fluid">
-    <div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
-      <h2 class="font-w600 mb-2 me-auto">Dashboard</h2>
+<main>
+  <header
+    class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10"
+  >
+    <div class="container-xl px-4">
+      <div class="page-header-content pt-4">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-auto mt-4">
+            <h1 class="page-header-title">
+              <div class="page-header-icon"><i data-feather="layout"></i></div>
+              Dashboard
+            </h1>
+            <!-- <div class="page-header-subtitle">Use this blank page as a starting point for creating new pages inside your project!</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main page content-->
+  <div class="container-xl px-4 mt-n10">
+    <div class="card mb-4">
+      <div class="card-header">Upload File</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <form
+            class="d-flex"
+            method="POST"
+            enctype="multipart/form-data"
+            action="/test"
+          >
+            <input
+              class="form-control form-control-lg me-5"
+              id="file"
+              type="file"
+              name="file"
+              accept="image/*"
+            />
+            <button class="btn btn-primary" id="submit-btn" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
     <div class="row">
-      <div class="col-xl-6 col-xxl-12">
+      <div class="col-md-6">
         <div class="card">
-          <div class="card-header d-sm-flex d-block pb-0 border-0">
-            <div>
-              <h4 class="fs-20 text-black">Upload Image</h4>
-            </div>
-          </div>
           <div class="card-body">
-            <div class="basic-form">
-              <form
-                class=""
-                method="POST"
-                enctype="multipart/form-data"
-                action="/test"
-              >
-                <div class="form-group">
-                  <div class="input-group input-group-lg mb-3">
-                    <div class="form-file">
-                      <input
-                        type="file"
-                        class="form-file-input form-control"
-                        name="file"
-                      />
-                    </div>
-                    <button type="submit" class="input-group-text">
-                      Upload
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
+            <h5 class="text-center card-title">VGG-19</h5>
+            <div style="height: 40vh"></div>
           </div>
+          <!-- <img class="card-img-bottom" src="path/to/image" alt="..."> -->
         </div>
       </div>
-      <div class="col-xl-3 col-xxl-6 col-sm-6">
+      <div class="col-md-6">
         <div class="card">
-          <div class="card-body d-flex">
-            <div>
-              <h2 class="invoice-num">VGG-19</h2>
-            </div>
+          <div class="card-body">
+            <h5 class="text-center card-title">EfficientNet</h5>
+            <div style="height: 40vh"></div>
           </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-xxl-6 col-sm-6">
-        <div class="card">
-          <div class="card-body d-flex">
-            <div>
-              <h2 class="invoice-num">EfficientNet</h2>
-            </div>
-          </div>
+          <!-- <img class="card-img-bottom" src="path/to/image" alt="..."> -->
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>
+
 <!--**********************************
             Content body end
         ***********************************-->

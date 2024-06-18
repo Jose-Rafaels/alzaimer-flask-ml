@@ -1,13 +1,12 @@
-# from model import get_db_connection , create_db
 from ml import modelcnn
 from model import insert_data, get_data
-from flask import Flask, redirect , render_template , request, jsonify
+from flask import Flask, redirect , render_template , request
 from uuid import uuid4
 import os
-import json
 
 app = Flask(__name__,static_url_path='', static_folder='static')
-app.config['UPLOAD_FOLDER'] = 'testing/'
+# app = Flask(__name__,static_url_path='/testing', static_folder='testing')
+app.config['UPLOAD_FOLDER'] = 'static/testing/'
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg'}
 
@@ -37,14 +36,14 @@ def test():
         result1 = "{:.2f}".format(result1_percentage)
         result2 = "{:.2f}".format(result2_percentage)
 
-        data["image"] = filepath
+        data["image"] = filepath.replace("static/", "")
         data['result1'] = result1
         data['result2'] = result2
         data['hasil1'] = hasil1
         data['hasil2'] = hasil2
         id = insert_data(data)
-        return json.dumps(data, indent=4)
-        # return redirect(f"/result/{id}")
+        # return json.dumps(data, indent=4)
+        return redirect(f"/result/{id}")
 
 @app.route('/info')
 def info():
@@ -54,10 +53,8 @@ def info():
 def result(id) :
     print(id)
     data = get_data(id)
-    print(data)
-    data.todict()
-    return json.dumps(data, indent=4)
-    # return render_template('result_detail.html', percobaan=data)
+    # print(data[0])
+    return render_template('result_detail.html', percobaan=data[0])
 
 if __name__ == '__main__' :
     app.run(debug=True)
